@@ -1,14 +1,16 @@
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import 'font-awesome-4.7.0/scss/font-awesome';
+@import 'ionicons/scss/ionicons';
+
+//@import '~ionicons/dist/scss/ionicons';
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
