@@ -8,7 +8,7 @@
                     <box
                         qtd="80"
                         title="Articles"
-                        url="#"
+                        url="{{ route('articles.index') }}"
                         color="orange"
                         icon="ion ion-pie-graph"></box>
                 </div>
