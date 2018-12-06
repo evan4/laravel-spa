@@ -21,6 +21,7 @@ Vue.component('top', require('./components/Top.vue'));
 Vue.component('panel', require('./components/Panel.vue'));
 Vue.component('box', require('./components/Box.vue'));
 Vue.component('page', require('./components/Page.vue'));
+Vue.component('table-list', require('./components/TableList.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
