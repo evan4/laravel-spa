@@ -3,7 +3,8 @@
 @section('content')
   <page size="12">
     <panel title="List of Articles">
-
+        <breadcrumb
+            v-bind:list="{{$listBreadcrumbs}}"></breadcrumb>
         <table-list
             v-bind:titles="['#', 'Títle', 'Description']"
             v-bind:items="[

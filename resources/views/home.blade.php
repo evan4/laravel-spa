@@ -2,6 +2,8 @@
 
 @section('content')
    <page size="10">
+        <breadcrumb
+            v-bind:list="{{$listBreadcrumbs}}"></breadcrumb>
         <panel title="Dashboard">
             <div class="row">
                 <div class="col-md-4">
