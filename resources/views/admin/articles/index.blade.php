@@ -5,10 +5,13 @@
     <panel title="List of Articles">
         <breadcrumb
             v-bind:list="{{$listBreadcrumbs}}"></breadcrumb>
-        <button type="button" class="btn btn-primary" data-toggle="modal" 
-            data-target="#myModalTest">
-            Launch demo modal
-            </button>
+        
+        <modallink
+            type="link"
+            name="myModalTest"
+            title="Create"
+            css="">
+        </modallink>
         <table-list
             v-bind:titles="['#', 'Títle', 'Description']"
             v-bind:items="[
@@ -26,23 +29,23 @@
         </table-list>
 
     </panel>
-    <modal name="myModalTest">
-        <form action="/action_page.php">
+    <modal name="myModalTest" title="Add">
+       <formcomponent
+        css=""
+        action="#"
+        method="put"
+        enctype="multypart/form-data"
+        token=1234"">
             <div class="form-group">
-              <label for="email">Email address:</label>
-              <input type="email" class="form-control" id="email">
+                <label for="title">Ttile:</label>
+                <input type="text" class="form-control" id="title">
             </div>
             <div class="form-group">
-              <label for="pwd">Password:</label>
-              <input type="password" class="form-control" id="pwd">
+                <label for="description">Description:</label>
+                <input type="text" class="form-control" id="description">
             </div>
-            <div class="form-group form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Remember me
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <button type="submit" class="btn btn-info">Add</button>
+        </formcomponent>
     </modal>
   </page>
 @endsection
