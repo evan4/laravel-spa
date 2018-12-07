@@ -86,20 +86,20 @@ export default {
 
         if(order === 'asc'){
           this.items.sort(function (a, b) {
-            if(a[orderCol] > b[orderCol]) {
+            if(Object.values(a)[orderCol] > Object.values(b)[orderCol]) {
               return 1
             }
-            if(a[orderCol] < b[orderCol]) {
+            if(Object.values(a)[orderCol] < Object.values(b)[orderCol]) {
               return -1
             }
             return 0;
           });
         }else{
           this.items.sort(function (a, b) {
-            if(a[orderCol] < b[orderCol]) {
+            if(Object.values(a)[orderCol] < Object.values(b)[orderCol]) {
               return 1
             }
-            if(a[orderCol] > b[orderCol]) {
+            if(Object.values(a)[orderCol] > Object.values(b)[orderCol]) {
               return -1
             }
             return 0;
@@ -107,7 +107,7 @@ export default {
         }
 
         
-        if(this.search != ''){
+        if(this.search){
           let search = this.search.toLowerCase();
           return this.items.filter(res => {
             for(var k =0; k < res.length; k++){

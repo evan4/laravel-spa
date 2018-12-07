@@ -14,10 +14,7 @@
         </modallink>
         <table-list
             v-bind:titles="['#', 'Títle', 'Description']"
-            v-bind:items="[
-                [1,'PHP', 'course php'],
-                [2,'Vue.js', 'course Vue.js'],
-            ]"
+            v-bind:items="{{$listArticles}}"
             create="#create"
             details="#details"
             edit="#edit"

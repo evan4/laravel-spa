@@ -48446,27 +48446,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       if (order === 'asc') {
         this.items.sort(function (a, b) {
-          if (a[orderCol] > b[orderCol]) {
+          if (Object.values(a)[orderCol] > Object.values(b)[orderCol]) {
             return 1;
           }
-          if (a[orderCol] < b[orderCol]) {
+          if (Object.values(a)[orderCol] < Object.values(b)[orderCol]) {
             return -1;
           }
           return 0;
         });
       } else {
         this.items.sort(function (a, b) {
-          if (a[orderCol] < b[orderCol]) {
+          if (Object.values(a)[orderCol] < Object.values(b)[orderCol]) {
             return 1;
           }
-          if (a[orderCol] > b[orderCol]) {
+          if (Object.values(a)[orderCol] > Object.values(b)[orderCol]) {
             return -1;
           }
           return 0;
         });
       }
 
-      if (this.search != '') {
+      if (this.search) {
         var search = this.search.toLowerCase();
         return this.items.filter(function (res) {
           for (var k = 0; k < res.length; k++) {

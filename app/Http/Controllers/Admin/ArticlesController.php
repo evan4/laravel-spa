@@ -24,7 +24,20 @@ class ArticlesController extends Controller
                 'url' => ""
             ],
         ]);
-        return view("admin.articles.index", compact('listBreadcrumbs'));
+        $listArticles = json_encode ([
+            [
+                'id' => 1,
+                'title' => 'PHP',
+                'description' => 'course php'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Vue.j',
+                'description' => 'course Vue.js'
+            ],
+        ]);
+
+        return view("admin.articles.index", compact('listBreadcrumbs', 'listArticles'));
     }
 
     /**
