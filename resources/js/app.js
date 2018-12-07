@@ -23,6 +23,8 @@ Vue.component('box', require('./components/Box.vue'));
 Vue.component('page', require('./components/Page.vue'));
 Vue.component('table-list', require('./components/TableList.vue'));
 Vue.component('breadcrumb', require('./components/Breadcrumb.vue'));
+Vue.component('modal', require('./components/modal/Modal.vue'));
+Vue.component('modallink', require('./components/modal/ModalLink.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
