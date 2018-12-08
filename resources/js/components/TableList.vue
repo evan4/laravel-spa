@@ -2,7 +2,14 @@
     <div>
       <div
         class="d-flex justify-content-between">
-        <a v-if="create" v-bind:href="create">Create</a>
+        <a v-if="create && !modal" v-bind:href="create">Create</a>
+        <modallink
+           v-if="create && modal"
+            type="link"
+            name="add"
+            title="Create"
+            css="">
+        </modallink>
         <div class="form-group float-right">
           <input type="search" 
             class="form-control"
@@ -31,18 +38,40 @@
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" v-bind:value="token">
                     <a v-if="details" v-bind:href="details">Details</a> |
-                    <a v-if="edit" v-bind:href="edit">Edit</a> |
+                    <a v-if="edit && !modal" v-bind:href="edit">Edit</a> |
+                    <modallink
+                      v-if="edit && modal"
+                        type="link"
+                        name="edit"
+                        title=" Edit |"
+                        modal="sim"
+                        css="">
+                    </modallink>
                     <a href="#" 
                       v-on:onclick="executeForm(index)">Delete</a>
                 </form>
                 <span v-if="!token">
                   <a v-if="details" v-bind:href="details">Details</a> |
-                  <a v-if="edit" v-bind:href="edit">Edit</a> |
+                  <a v-if="edit && modal" v-bind:href="edit">Edit</a> |
+                    <modallink
+                      v-if="edit && modal"
+                        type="link"
+                        name="edit"
+                        title=" Edit |"
+                        css="">
+                    </modallink>
                   <a v-if="deleted" v-bind:href="deleted">Delete</a>
                 </span>
                 <span v-if="token && !details">
                     <a v-if="details" v-bind:href="details">Details</a> |
-                    <a v-if="edit" v-bind:href="edit">Edit</a>
+                    <a v-if="edit && !modal" v-bind:href="edit">Edit</a>
+                    <modallink
+                      v-if="edit && modal"
+                        type="link"
+                        name="edit"
+                        title=" Edit"
+                        css="">
+                    </modallink>
                 </span>
             </td>
           </tr>
@@ -54,7 +83,8 @@
 
 <script>
 export default {
-    props: ['titles', 'items', 'order', 'orderCol',  "create", "details", "edit", "deleted", "token"],
+    props: ['titles', 'items', 'order', 'orderCol',  "create", "details", "edit", 
+    "deleted", "token", 'modal'],
     data: function () {
       return {
         search: '',

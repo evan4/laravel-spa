@@ -5,13 +5,7 @@
     <panel title="List of Articles">
         <breadcrumb
             v-bind:list="{{$listBreadcrumbs}}"></breadcrumb>
-        
-        <modallink
-            type="link"
-            name="myModalTest"
-            title="Create"
-            css="">
-        </modallink>
+
         <table-list
             v-bind:titles="['#', 'Títle', 'Description']"
             v-bind:items="{{$listArticles}}"
@@ -22,11 +16,12 @@
             order="desc"
             order-col="1"
             token="855566"
+            modal="sim"
             >
         </table-list>
 
     </panel>
-    <modal name="myModalTest" title="Add">
+    <modal name="add" title="Create">
        <formcomponent
         css=""
         action="#"
@@ -41,8 +36,26 @@
                 <label for="description">Description:</label>
                 <input type="text" class="form-control" id="description">
             </div>
-            <button type="submit" class="btn btn-info">Add</button>
+            <button type="submit" class="btn btn-info">Save</button>
         </formcomponent>
     </modal>
+    <modal name="edit" title="Edit">
+        <formcomponent
+         css=""
+         action="#"
+         method="put"
+         enctype="multypart/form-data"
+         token=1234"">
+             <div class="form-group">
+                 <label for="title">Ttile:</label>
+                 <input type="text" class="form-control" id="title">
+             </div>
+             <div class="form-group">
+                 <label for="description">Description:</label>
+                 <input type="text" class="form-control" id="description">
+             </div>
+             <button type="submit" class="btn btn-info">Save</button>
+         </formcomponent>
+     </modal>
   </page>
 @endsection
