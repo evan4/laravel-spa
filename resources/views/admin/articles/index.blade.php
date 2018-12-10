@@ -21,8 +21,10 @@
         </table-list>
 
     </panel>
+    
     <modal name="add" title="Create">
        <formcomponent
+       id="formAdd"
         css=""
         action="#"
         method="put"
@@ -36,11 +38,18 @@
                 <label for="description">Description:</label>
                 <input type="text" class="form-control" id="description">
             </div>
-            <button type="submit" class="btn btn-info">Save</button>
         </formcomponent>
+
+        <span slot="buttons">
+            <button  form="formAdd"
+                type="submit" class="btn btn-info">Save</button>
+         </span>
+
     </modal>
+
     <modal name="edit" title="Edit">
         <formcomponent
+        id="formEdit"
          css=""
          action="#"
          method="put"
@@ -56,11 +65,18 @@
                  <input type="text" class="form-control" id="description"
                     placeholder="Description" v-model="$store.state.item.description">
              </div>
-             <button type="submit" class="btn btn-info">Save</button>
          </formcomponent>
+         
+         <span slot="buttons">
+            <button  form="formEdit"
+                type="submit" class="btn btn-info">Save</button>
+         </span>
+         
      </modal>
+
      <modal name="details" v-bind:title="$store.state.item.title">
         <p >@{{$store.state.item.description}}</p>
      </modal>
+
   </page>
 @endsection

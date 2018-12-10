@@ -160,6 +160,7 @@ export default {
         if(this.search){
           let search = this.search.toLowerCase();
           return this.items.filter(res => {
+            res = Object.values(res);
             for(var k =0; k < res.length; k++){
               if((res[k]+ "").toLowerCase().indexOf(search) >= 0){
                   return true;
