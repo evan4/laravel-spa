@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Article;
+
 class ArticlesController extends Controller
 {
     /**
@@ -24,18 +26,7 @@ class ArticlesController extends Controller
                 'url' => ""
             ],
         ]);
-        $listArticles = json_encode ([
-            [
-                'id' => 1,
-                'title' => 'PHP',
-                'description' => 'course php'
-            ],
-            [
-                'id' => 2,
-                'title' => 'Vue.j',
-                'description' => 'course Vue.js'
-            ],
-        ]);
+        $listArticles = json_encode (Article::select('id', 'title', 'description', 'data')->get());
 
         return view("admin.articles.index", compact('listBreadcrumbs', 'listArticles'));
     }
@@ -58,7 +49,12 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $data = $request->all(); 
+        $article = new Article();
+        $article->create($data);
+
+        return back();
     }
 
     /**

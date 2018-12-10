@@ -17,7 +17,7 @@
     
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="display:none;">
         <top
             title="{{ config('app.name', 'Laravel') }}"
             url="{{ url('/') }}">
