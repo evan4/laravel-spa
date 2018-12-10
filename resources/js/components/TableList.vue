@@ -1,7 +1,9 @@
 <template>
     <div>
+      <p>{{this.$store.state.items}}</p>
       <div
         class="d-flex justify-content-between">
+        
         <a v-if="create && !modal" v-bind:href="create">Create</a>
         <modallink
            v-if="create && modal"
@@ -17,6 +19,7 @@
             placeholder="Search">{{search}}
       </div>
     </div>
+
     <table class="table table-striped table-hover">
         <thead>
           <tr>
@@ -108,6 +111,9 @@ export default {
     },
     computed: {
       list: function () {
+
+        this.$store.commit('setItems', {opa: 'OK'});
+
         let order = this.orderAux,
           orderCol = this.orderAuxCol;
 
@@ -136,7 +142,6 @@ export default {
           });
         }
 
-        
         if(this.search){
           let search = this.search.toLowerCase();
           return this.items.filter(res => {
