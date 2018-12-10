@@ -49311,7 +49311,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49322,6 +49322,25 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49582,12 +49601,24 @@ var render = function() {
                           domProps: { value: _vm.token }
                         }),
                         _vm._v(" "),
-                        _vm.details
+                        _vm.details && !_vm.modal
                           ? _c("a", { attrs: { href: _vm.details } }, [
-                              _vm._v("Details")
+                              _vm._v("Details |")
                             ])
                           : _vm._e(),
-                        _vm._v(" |\n                "),
+                        _vm._v(" "),
+                        _vm.details && _vm.modal
+                          ? _c("modallink", {
+                              attrs: {
+                                item: item,
+                                type: "link",
+                                name: "details",
+                                title: " Details |",
+                                css: ""
+                              }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
                         _vm.edit && !_vm.modal
                           ? _c("a", { attrs: { href: _vm.edit } }, [
                               _vm._v("Edit")
@@ -49665,12 +49696,24 @@ var render = function() {
                   ? _c(
                       "span",
                       [
-                        _vm.details
+                        _vm.details && !_vm.modal
                           ? _c("a", { attrs: { href: _vm.details } }, [
                               _vm._v("Details")
                             ])
                           : _vm._e(),
                         _vm._v(" |\n                "),
+                        _vm.details && _vm.modal
+                          ? _c("modallink", {
+                              attrs: {
+                                item: item,
+                                type: "link",
+                                name: "details",
+                                title: " Details |",
+                                css: ""
+                              }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
                         _vm.edit && !_vm.modal
                           ? _c("a", { attrs: { href: _vm.edit } }, [
                               _vm._v("Edit")

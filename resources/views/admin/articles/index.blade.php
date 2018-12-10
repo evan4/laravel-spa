@@ -59,5 +59,8 @@
              <button type="submit" class="btn btn-info">Save</button>
          </formcomponent>
      </modal>
+     <modal name="details" v-bind:title="$store.state.item.title">
+        <p >@{{$store.state.item.description}}</p>
+     </modal>
   </page>
 @endsection
