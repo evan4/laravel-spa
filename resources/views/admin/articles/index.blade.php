@@ -47,12 +47,14 @@
          enctype="multypart/form-data"
          token=1234"">
              <div class="form-group">
-                 <label for="title">Ttile:</label>
-                 <input type="text" class="form-control" id="title">
+             <label for="title">Ttile: </label>
+                 <input type="text" class="form-control" id="title" 
+                    placeholder="Title" v-model="$store.state.item.title">
              </div>
              <div class="form-group">
                  <label for="description">Description:</label>
-                 <input type="text" class="form-control" id="description">
+                 <input type="text" class="form-control" id="description"
+                    placeholder="Description" v-model="$store.state.item.description">
              </div>
              <button type="submit" class="btn btn-info">Save</button>
          </formcomponent>

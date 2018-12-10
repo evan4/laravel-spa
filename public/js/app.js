@@ -14334,13 +14334,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */]);
 
 var store = new __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].Store({
     state: {
-        items: {
-            test: 'fuctional'
-        }
+        item: {}
     },
     mutations: {
-        setItems: function setItems(state, obj) {
-            state.items = obj;
+        setItem: function setItem(state, obj) {
+            state.item = obj;
         }
     }
 });
@@ -49313,7 +49311,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49324,7 +49322,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -49435,9 +49432,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   computed: {
     list: function list() {
-
-      this.$store.commit('setItems', { opa: 'OK' });
-
       var order = this.orderAux,
           orderCol = this.orderAuxCol;
 
@@ -49491,8 +49485,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("p", [_vm._v(_vm._s(this.$store.state.items))]),
-    _vm._v(" "),
     _c(
       "div",
       { staticClass: "d-flex justify-content-between" },
@@ -49605,6 +49597,7 @@ var render = function() {
                         _vm.edit && _vm.modal
                           ? _c("modallink", {
                               attrs: {
+                                item: item,
                                 type: "link",
                                 name: "edit",
                                 title: " Edit |",
@@ -50167,7 +50160,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50203,9 +50196,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['type', 'name', 'title', 'css']
+    props: ['type', 'name', 'title', 'css', 'item'],
+    methods: {
+        fillForm: function fillForm() {
+            this.$store.commit('setItem', this.item);
+        }
+    }
 });
 
 /***/ }),
@@ -50217,49 +50244,117 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("span", [
-    !_vm.type || (_vm.type != "button" && _vm.type != "link")
-      ? _c(
-          "button",
-          {
-            class: _vm.css || "btn  btn-primary",
-            attrs: {
-              type: "button",
-              "data-toggle": "modal",
-              "data-target": "#" + _vm.name
-            }
-          },
-          [_vm._v("\n        " + _vm._s(_vm.title) + "\n    ")]
-        )
+    _vm.item
+      ? _c("span", [
+          !_vm.type || (_vm.type != "button" && _vm.type != "link")
+            ? _c(
+                "button",
+                {
+                  class: _vm.css || "btn  btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.fillForm()
+                    }
+                  }
+                },
+                [_vm._v("\n            " + _vm._s(_vm.title) + "\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.type == "button"
+            ? _c(
+                "button",
+                {
+                  class: _vm.css || "btn  btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.fillForm()
+                    }
+                  }
+                },
+                [_vm._v("\n            " + _vm._s(_vm.title) + "\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.type == "link"
+            ? _c(
+                "a",
+                {
+                  class: _vm.css || "",
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.fillForm()
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.title) + "\n        ")]
+              )
+            : _vm._e()
+        ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.type == "button"
-      ? _c(
-          "button",
-          {
-            class: _vm.css || "btn  btn-primary",
-            attrs: {
-              type: "button",
-              "data-toggle": "modal",
-              "data-target": "#" + _vm.name
-            }
-          },
-          [_vm._v("\n        " + _vm._s(_vm.title) + "\n    ")]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.type == "link"
-      ? _c(
-          "a",
-          {
-            class: _vm.css || "",
-            attrs: {
-              href: "#",
-              "data-toggle": "modal",
-              "data-target": "#" + _vm.name
-            }
-          },
-          [_vm._v(_vm._s(_vm.title))]
-        )
+    !_vm.item
+      ? _c("span", [
+          !_vm.type || (_vm.type != "button" && _vm.type != "link")
+            ? _c(
+                "button",
+                {
+                  class: _vm.css || "btn  btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  }
+                },
+                [_vm._v("\n            " + _vm._s(_vm.title) + "\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.type == "button"
+            ? _c(
+                "button",
+                {
+                  class: _vm.css || "btn  btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  }
+                },
+                [_vm._v("\n            " + _vm._s(_vm.title) + "\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.type == "link"
+            ? _c(
+                "a",
+                {
+                  class: _vm.css || "",
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  }
+                },
+                [_vm._v(_vm._s(_vm.title) + "\n        ")]
+              )
+            : _vm._e()
+        ])
       : _vm._e()
   ])
 }

@@ -1,8 +1,6 @@
 <template>
     <div>
-      <p>{{this.$store.state.items}}</p>
-      <div
-        class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between">
         
         <a v-if="create && !modal" v-bind:href="create">Create</a>
         <modallink
@@ -44,6 +42,7 @@
                     <a v-if="edit && !modal" v-bind:href="edit">Edit</a> |
                     <modallink
                       v-if="edit && modal"
+                        v-bind:item="item"
                         type="link"
                         name="edit"
                         title=" Edit |"
@@ -111,9 +110,6 @@ export default {
     },
     computed: {
       list: function () {
-
-        this.$store.commit('setItems', {opa: 'OK'});
-
         let order = this.orderAux,
           orderCol = this.orderAuxCol;
 

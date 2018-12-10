@@ -22,13 +22,13 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        items: {
-            test: 'fuctional'
+        item: {
+            
         }
     },
     mutations: {
-        setItems(state, obj) {
-            state.items = obj;
+        setItem(state, obj) {
+            state.item = obj;
         }
     }
 });
