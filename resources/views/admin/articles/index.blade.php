@@ -1,7 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-  <page size="12">
+    <page size="12">
+        @if($errors->all())
+            
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                @foreach($errors->all() as $key => $value)
+                <li>
+                    <strong>{{$value}}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </li>
+                
+                @endforeach
+            </div>
+           
+        @endif
+      
     <panel title="List of Articles">
         <breadcrumb
             v-bind:list="{{$listBreadcrumbs}}"></breadcrumb>
@@ -33,22 +49,22 @@
             <div class="form-group">
                 <label for="title">Ttile:</label>
                 <input type="text" class="form-control" id="title" name="title"
-                    placeholder="Title">
+                placeholder="Title" value="{{old('title')}}">
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
                 <input type="text" class="form-control" id="description" name="description"
-                    placeholder="Description">
+                    placeholder="Description" value="{{old('description')}}">
             </div>
             <div class="form-group">
                 <label for="content">Conten:</label>
                 <textarea class="form-control" id="conten" 
-                    name="content"></textarea>
+                    name="content">{{old('content')}}</textarea>
             </div>
             <div class="form-group">
                 <label for="data">Data:</label>
                 <input type="datetime-local" class="form-control" id="data"
-                    name="data">
+                    name="data" value="{{old('data')}}">
             </div>
         </formcomponent>
 

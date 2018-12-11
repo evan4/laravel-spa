@@ -51,6 +51,18 @@ class ArticlesController extends Controller
     {
         //dd($request->all());
         $data = $request->all(); 
+
+        $validator = \Validator::make($data, [
+            "title" => "required",
+            "description" => "required",
+            "content" => "required",
+            "data" => "required",
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+
         $article = new Article();
         $article->create($data);
 
