@@ -49,7 +49,6 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
         $data = $request->all(); 
 
         $validator = \Validator::make($data, [
@@ -63,9 +62,7 @@ class ArticlesController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $article = new Article();
-        $article->create($data);
-
+        Article::create($data);
         return back();
     }
 
@@ -77,7 +74,9 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Article::find($id);
+       
+        return $article;
     }
 
     /**
@@ -100,7 +99,21 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $data = $request->all(); 
+       
+        $validator = \Validator::make($data, [
+            "title" => "required",
+            "description" => "required",
+            "content" => "required",
+            "data" => "required",
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+        Article::findOrFail($id)->update($data);
+        return back();
     }
 
     /**
@@ -111,6 +124,7 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Article::findOrFail($id)->delete();
+        return back();
     }
 }

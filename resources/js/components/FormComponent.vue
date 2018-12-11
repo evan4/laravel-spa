@@ -1,6 +1,7 @@
 <template>
     <form v-bind:class="css"
-        v-bind:action="action" v-bind:method="defineMethod"
+        v-bind:action="action" 
+        v-bind:method="defineMethod"
         v-bind:enctype="enctype">
         <input v-if="alterMethod" type="hidden" name="_method" v-bind:value="alterMethod">
         <input v-if="token" type="hidden" name="_token" v-bind:value="token">
@@ -23,10 +24,10 @@ export default {
                 return this.method.toLowerCase();
             }
             if (this.method.toLowerCase() === 'put') {
-                return this.alterMethod = 'put';
+                this.alterMethod = 'put';
             }
             if (this.method.toLowerCase() === 'delete') {
-                return this.alterMethod = 'delete';
+                this.alterMethod = 'delete';
             }
 
             return 'post';

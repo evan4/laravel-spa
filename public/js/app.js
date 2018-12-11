@@ -49314,7 +49314,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49429,9 +49429,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['titles', 'items', 'order', 'orderCol', "create", "details", "edit", "deleted", "token", 'modal'],
+  props: ['titles', 'items', 'order', 'orderCol', "create", "details", "edited", "deleted", "token", 'modal'],
   data: function data() {
     return {
       search: '',
@@ -49441,6 +49449,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     executeForm: function executeForm(index) {
+      console.log(index);
       document.getElementById(index).submit();
     },
     orderColumn: function orderColumn(column) {
@@ -49590,7 +49599,13 @@ var render = function() {
                 _vm.details && _vm.token
                   ? _c(
                       "form",
-                      { attrs: { id: index, action: _vm.deleted } },
+                      {
+                        attrs: {
+                          id: index,
+                          method: "post",
+                          action: _vm.deleted + item.id
+                        }
+                      },
                       [
                         _c("input", {
                           attrs: {
@@ -49615,6 +49630,7 @@ var render = function() {
                           ? _c("modallink", {
                               attrs: {
                                 item: item,
+                                url: _vm.details,
                                 type: "link",
                                 name: "details",
                                 title: " Details |",
@@ -49623,16 +49639,17 @@ var render = function() {
                             })
                           : _vm._e(),
                         _vm._v(" "),
-                        _vm.edit && !_vm.modal
+                        _vm.edited && !_vm.modal
                           ? _c("a", { attrs: { href: _vm.edit } }, [
                               _vm._v("Edit")
                             ])
                           : _vm._e(),
                         _vm._v(" |\n                "),
-                        _vm.edit && _vm.modal
+                        _vm.edited && _vm.modal
                           ? _c("modallink", {
                               attrs: {
                                 item: item,
+                                url: _vm.edited,
                                 type: "link",
                                 name: "edit",
                                 title: " Edit |",
@@ -49647,7 +49664,7 @@ var render = function() {
                           {
                             attrs: { href: "#" },
                             on: {
-                              onclick: function($event) {
+                              click: function($event) {
                                 _vm.executeForm(index)
                               }
                             }
@@ -49669,15 +49686,17 @@ var render = function() {
                             ])
                           : _vm._e(),
                         _vm._v(" |\n              "),
-                        _vm.edit && _vm.modal
+                        _vm.edited && _vm.modal
                           ? _c("a", { attrs: { href: _vm.edit } }, [
                               _vm._v("Edit")
                             ])
                           : _vm._e(),
                         _vm._v(" |\n                "),
-                        _vm.edit && _vm.modal
+                        _vm.edited && _vm.modal
                           ? _c("modallink", {
                               attrs: {
+                                item: item,
+                                url: _vm.edited,
                                 type: "link",
                                 name: "edit",
                                 title: " Edit |",
@@ -49710,6 +49729,7 @@ var render = function() {
                           ? _c("modallink", {
                               attrs: {
                                 item: item,
+                                url: _vm.details,
                                 type: "link",
                                 name: "details",
                                 title: " Details |",
@@ -49718,15 +49738,17 @@ var render = function() {
                             })
                           : _vm._e(),
                         _vm._v(" "),
-                        _vm.edit && !_vm.modal
+                        _vm.edited && !_vm.modal
                           ? _c("a", { attrs: { href: _vm.edit } }, [
                               _vm._v("Edit")
                             ])
                           : _vm._e(),
                         _vm._v(" "),
-                        _vm.edit && _vm.modal
+                        _vm.edited && _vm.modal
                           ? _c("modallink", {
                               attrs: {
+                                item: item,
+                                url: _vm.edited,
                                 type: "link",
                                 name: "edit",
                                 title: " Edit",
@@ -50008,7 +50030,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50019,23 +50041,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -50227,7 +50232,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50294,10 +50299,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['type', 'name', 'title', 'css', 'item'],
+    props: ['type', 'name', 'title', 'css', 'item', 'url'],
     methods: {
         fillForm: function fillForm() {
-            this.$store.commit('setItem', this.item);
+            var _this = this;
+
+            axios.get(this.url + this.item.id).then(function (res) {
+                _this.$store.commit('setItem', res.data);
+            });
+            //this.$store.commit('setItem', this.item);
         }
     }
 });
@@ -50521,7 +50531,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50532,6 +50542,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -50556,10 +50567,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return this.method.toLowerCase();
             }
             if (this.method.toLowerCase() === 'put') {
-                return this.alterMethod = 'put';
+                this.alterMethod = 'put';
             }
             if (this.method.toLowerCase() === 'delete') {
-                return this.alterMethod = 'delete';
+                this.alterMethod = 'delete';
             }
 
             return 'post';

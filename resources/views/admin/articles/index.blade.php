@@ -26,12 +26,12 @@
             v-bind:titles="['#', 'Títle', 'Description']"
             v-bind:items="{{$listArticles}}"
             create="#create"
-            details="#details"
-            edit="#edit"
-            deleted="#delete"
+            details="/admin/articles/"
+            edited="/admin/articles/"
+            deleted="/admin/articles/"
             order="desc"
             order-col="1"
-            token="855566"
+            token="{{csrf_token()}}"
             modal="sim"
             >
         </table-list>
@@ -64,7 +64,7 @@
             <div class="form-group">
                 <label for="data">Data:</label>
                 <input type="datetime-local" class="form-control" id="data"
-                    name="data" value="{{old('data')}}">
+                    name="data" value="{{ old('data') }}">
             </div>
         </formcomponent>
 
@@ -79,10 +79,10 @@
         <formcomponent
         id="formEdit"
          css=""
-         action="{{route('articles.store')}}"
+         v-bind:action="'/admin/articles/'+$store.state.item.id"
          method="put"
          enctype=""
-        token="{{csrf_token()}}">
+         token="{{ csrf_token() }}">
              <div class="form-group">
              <label for="title">Ttile: </label>
                  <input type="text" class="form-control" id="title" 
@@ -102,10 +102,11 @@
             </div>
             <div class="form-group">
                 <label for="data">Data:</label>
-                <input type="datetime-local" class="form-control" id="data"
+                <input type="text" class="form-control" id="data"
                     name="data"
                    v-model="$store.state.item.data">
             </div>
+            
          </formcomponent>
          
          <span slot="buttons">

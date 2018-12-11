@@ -34,8 +34,9 @@
             <td v-for="i in item">{{i}}</td>
            
             <td>
-                <form v-bind:id="index"
-                v-if="details && token" v-bind:action="deleted">
+                <form 
+                v-bind:id="index"
+                v-if="details && token" method="post" v-bind:action="deleted + item.id" >
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" v-bind:value="token">
 
@@ -43,16 +44,18 @@
                     <modallink
                       v-if="details && modal"
                         v-bind:item="item"
+                        v-bind:url="details"
                         type="link"
                         name="details"
                         title=" Details |"
                         css="">
                     </modallink>
 
-                    <a v-if="edit && !modal" v-bind:href="edit">Edit</a> |
+                    <a v-if="edited && !modal" v-bind:href="edit">Edit</a> |
                     <modallink
-                      v-if="edit && modal"
+                      v-if="edited && modal"
                         v-bind:item="item"
+                        v-bind:url="edited"
                         type="link"
                         name="edit"
                         title=" Edit |"
@@ -60,13 +63,15 @@
                         css="">
                     </modallink>
                     <a href="#" 
-                      v-on:onclick="executeForm(index)">Delete</a>
+                      v-on:click="executeForm(index)">Delete</a>
                 </form>
                 <span v-if="!token">
                   <a v-if="details" v-bind:href="details">Details</a> |
-                  <a v-if="edit && modal" v-bind:href="edit">Edit</a> |
+                  <a v-if="edited && modal" v-bind:href="edit">Edit</a> |
                     <modallink
-                      v-if="edit && modal"
+                      v-if="edited && modal"
+                        v-bind:item="item"
+                        v-bind:url="edited"
                         type="link"
                         name="edit"
                         title=" Edit |"
@@ -79,15 +84,18 @@
                     <modallink
                       v-if="details && modal"
                         v-bind:item="item"
+                        v-bind:url="details"
                         type="link"
                         name="details"
                         title=" Details |"
                         css="">
                     </modallink>
 
-                    <a v-if="edit && !modal" v-bind:href="edit">Edit</a>
+                    <a v-if="edited && !modal" v-bind:href="edit">Edit</a>
                     <modallink
-                      v-if="edit && modal"
+                      v-if="edited && modal"
+                        v-bind:item="item"
+                        v-bind:url="edited"
                         type="link"
                         name="edit"
                         title=" Edit"
@@ -104,7 +112,7 @@
 
 <script>
 export default {
-    props: ['titles', 'items', 'order', 'orderCol',  "create", "details", "edit", 
+    props: ['titles', 'items', 'order', 'orderCol',  "create", "details", "edited", 
     "deleted", "token", 'modal'],
     data: function () {
       return {
@@ -115,6 +123,7 @@ export default {
     },
     methods:{
       executeForm: function (index) {
+        console.log(index);
         document.getElementById(index).submit();
       },
       orderColumn: function (column) {
