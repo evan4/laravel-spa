@@ -49314,7 +49314,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49463,14 +49463,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   computed: {
     list: function list() {
-      var order = this.orderAux,
+      var list = this.items.data,
+          order = this.orderAux,
           orderCol = this.orderAuxCol;
 
       order = order.toLowerCase();
       orderCol = parseInt(orderCol);
 
       if (order === 'asc') {
-        this.items.sort(function (a, b) {
+        list.sort(function (a, b) {
           if (Object.values(a)[orderCol] > Object.values(b)[orderCol]) {
             return 1;
           }
@@ -49480,7 +49481,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return 0;
         });
       } else {
-        this.items.sort(function (a, b) {
+        list.sort(function (a, b) {
           if (Object.values(a)[orderCol] < Object.values(b)[orderCol]) {
             return 1;
           }
@@ -49503,7 +49504,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return false;
         });
       }
-      return this.items;
+      return list;
     }
   }
 });

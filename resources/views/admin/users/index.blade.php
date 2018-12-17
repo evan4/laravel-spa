@@ -24,7 +24,7 @@
             
         <table-list
             v-bind:titles="['#', 'Name', 'Email']"
-            v-bind:items="{{$listModel}}"
+            v-bind:items="{{json_encode($listModel)}}"
             create="#create"
             details="/admin/users/"
             edited="/admin/users/"
@@ -35,7 +35,7 @@
             modal="sim"
             >
         </table-list>
-
+        {{$listModel->links()}}
     </panel>
     
     <modal name="add" title="Create">

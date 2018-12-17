@@ -138,14 +138,15 @@ export default {
     },
     computed: {
       list: function () {
-        let order = this.orderAux,
+        let list = this.items.data,
+          order = this.orderAux,
           orderCol = this.orderAuxCol;
 
         order = order.toLowerCase();
         orderCol = parseInt(orderCol);
 
         if(order === 'asc'){
-          this.items.sort(function (a, b) {
+          list.sort(function (a, b) {
             if(Object.values(a)[orderCol] > Object.values(b)[orderCol]) {
               return 1
             }
@@ -155,7 +156,7 @@ export default {
             return 0;
           });
         }else{
-          this.items.sort(function (a, b) {
+          list.sort(function (a, b) {
             if(Object.values(a)[orderCol] < Object.values(b)[orderCol]) {
               return 1
             }
@@ -178,7 +179,7 @@ export default {
             return false;
           });
         }
-        return this.items;
+        return list;
       }
     }
 };
