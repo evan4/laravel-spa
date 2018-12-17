@@ -28,7 +28,7 @@ class UsersController extends Controller
                 'url' => ""
             ],
         ]);
-        $listModel = json_encode (User::select('id', 'name', 'email')->get());
+        $listModel = json_encode ( User::select('id', 'name', 'email')->get() );
 
         return view("admin.users.index", compact('listBreadcrumbs', 'listModel'));
     }
