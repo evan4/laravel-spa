@@ -47,23 +47,23 @@
         enctype=""
         token="{{csrf_token()}}">
             <div class="form-group">
-                <label for="title">Ttile:</label>
-                <input type="text" class="form-control" id="title" name="title"
+                <label for="title-create">Ttile:</label>
+                <input type="text" class="form-control" id="title-create" name="title"
                 placeholder="Title" value="{{old('title')}}">
             </div>
             <div class="form-group">
-                <label for="description">Description:</label>
-                <input type="text" class="form-control" id="description" name="description"
+                <label for="description-create">Description:</label>
+                <input type="text" class="form-control" id="description-create" name="description"
                     placeholder="Description" value="{{old('description')}}">
             </div>
             <div class="form-group">
-                <label for="content">Conten:</label>
-                <textarea class="form-control" id="conten" 
+                <label for="content-create">Conten:</label>
+                <textarea class="form-control" id="content-create" 
                     name="content">{{old('content')}}</textarea>
             </div>
             <div class="form-group">
-                <label for="data">Data:</label>
-                <input type="datetime-local" class="form-control" id="data"
+                <label for="data-create">Data:</label>
+                <input type="datetime-local" class="form-control" id="data-create"
                     name="data" value="{{ old('data') }}">
             </div>
         </formcomponent>

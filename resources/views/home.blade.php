@@ -18,7 +18,7 @@
                     <box
                         qtd="1500"
                         title="Users"
-                        url="#"
+                        url="{{ route('users.index') }}"
                         color="blue"
                         icon="ion ion-person-stalker"></box>
                 </div>
