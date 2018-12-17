@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Role;
 
 use App\User;
 
@@ -102,12 +103,23 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all(); 
-       
-        $validator = \Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6'],
-        ]);
+
+        if ( isset($data['password']) && !empty($data['password']) ) {
+            $validator = \Validator::make($data, [
+                 'name' => ['required', 'string', 'max:255'],
+                 'email' => ['required', 'string', 'email', 'max:255', 
+                    Rule::unique('users')->ignore($id)],
+                 'password' => ['required', 'string', 'min:6'],
+             ]); 
+             $data['password'] = Hash::make($data['password']);
+         }else{
+             $validator = \Validator::make($data, [
+                 'name' => ['required', 'string', 'max:255'],
+                 'email' => ['required', 'string', 'email', 'max:255', 
+                    Rule::unique('users')->ignore($id)],
+             ]);
+            unset($data['password']);
+         }
 
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
