@@ -26,7 +26,7 @@
                     <box
                         qtd="3"
                         title="Authors"
-                        url="#"
+                        url="{{ route('authors.index') }}"
                         color="red"
                         icon="ion ion-person"></box>
                 </div>

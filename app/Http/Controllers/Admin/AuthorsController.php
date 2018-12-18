@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Role;
 
-use App\Article;
+use App\User;
 
-class ArticlesController extends Controller
+class AuthorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,13 +23,13 @@ class ArticlesController extends Controller
                 'url' => route('home')
             ],
              [
-                'title' => 'shopping list',
+                'title' => 'Authors list',
                 'url' => ""
             ],
         ]);
-        $listArticles = Article::select('id', 'title', 'description', 'data')->paginate(2);
+        $listModel =  User::select('id', 'name', 'email')->paginate(2);
 
-        return view("admin.articles.index", compact('listBreadcrumbs', 'listArticles'));
+        return view("admin.authors.index", compact('listBreadcrumbs', 'listModel'));
     }
 
     /**
@@ -49,20 +50,22 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+        
         $data = $request->all(); 
 
         $validator = \Validator::make($data, [
-            "title" => "required",
-            "description" => "required",
-            "content" => "required",
-            "data" => "required",
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6'],
         ]);
 
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
         }
 
-        Article::create($data);
+        $data['password'] = Hash::make($data['password']);
+
+        User::create($data);
         return back();
     }
 
@@ -74,7 +77,7 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        return Article::find($id);
+        return User::find($id);
     }
 
     /**
@@ -97,20 +100,29 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
         $data = $request->all(); 
-       
-        $validator = \Validator::make($data, [
-            "title" => "required",
-            "description" => "required",
-            "content" => "required",
-            "data" => "required",
-        ]);
+
+        if ( isset($data['password']) && !empty($data['password']) ) {
+            $validator = \Validator::make($data, [
+                 'name' => ['required', 'string', 'max:255'],
+                 'email' => ['required', 'string', 'email', 'max:255', 
+                    Rule::unique('users')->ignore($id)],
+                 'password' => ['required', 'string', 'min:6'],
+             ]); 
+             $data['password'] = Hash::make($data['password']);
+         }else{
+             $validator = \Validator::make($data, [
+                 'name' => ['required', 'string', 'max:255'],
+                 'email' => ['required', 'string', 'email', 'max:255', 
+                    Rule::unique('users')->ignore($id)],
+             ]);
+            unset($data['password']);
+         }
 
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
         }
-        Article::findOrFail($id)->update($data);
+        User::findOrFail($id)->update($data);
         return back();
     }
 
@@ -122,7 +134,7 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        Article::findOrFail($id)->delete();
+        User::findOrFail($id)->delete();
         return back();
     }
 }
