@@ -33,7 +33,7 @@
           <tr v-for="(item, index) in list">
             <td v-for="i in item">{{i}}</td>
            
-            <td>
+            <td  v-if="details || edit || deleted ">
                 <form 
                 v-bind:id="index"
                 v-if="details && token" method="post" v-bind:action="deleted + item.id" >
@@ -65,9 +65,10 @@
                     <a href="#" 
                       v-on:click="executeForm(index)">Delete</a>
                 </form>
+
                 <span v-if="!token">
                   <a v-if="details" v-bind:href="details">Details</a> |
-                  <a v-if="edited && modal" v-bind:href="edit">Edit</a> |
+                  <a v-if="edited && !modal" v-bind:href="edit">Edit</a> |
                     <modallink
                       v-if="edited && modal"
                         v-bind:item="item"

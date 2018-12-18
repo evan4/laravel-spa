@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Role;
+use Illuminate\Validation\Rule;
 
 use App\User;
 
@@ -28,7 +28,7 @@ class UsersController extends Controller
                 'url' => ""
             ],
         ]);
-        $listModel =  User::select('id', 'name', 'email')->paginate(2);
+        $listModel =  User::select('id', 'name', 'email')->paginate(5);
 
         return view("admin.users.index", compact('listBreadcrumbs', 'listModel'));
     }

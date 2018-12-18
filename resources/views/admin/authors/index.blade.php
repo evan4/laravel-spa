@@ -28,10 +28,8 @@
             create="#create"
             details="/admin/authors/"
             edited="/admin/authors/"
-            deleted="/admin/authors/"
             order="desc"
             order-col="1"
-            token="{{csrf_token()}}"
             modal="sim"
             >
         </table-list>
@@ -55,6 +53,15 @@
                 <label for="email-create">Email:</label>
                 <input type="email" class="form-control" id="email-create" name="email"
                     placeholder="Email" value="{{old('email')}}">
+            </div>
+            <div class="form-group">
+                <label for="author-create">Author:</label>
+                <select class="form-control" id="author-create" name="author">
+                    <option {{ old('author') && old('author') === 'N' ? 'selected' : '' }} value="N">No</option>
+                    <option {{ old('author') && old('author') === 'S' ? 'selected' : '' }} 
+                        {{ !old('author') ? 'selected' : '' }}
+                        value="S">Yes</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="password-create">Password:</label>
@@ -89,6 +96,14 @@
                  <input type="email" class="form-control" id="email" name="email"
                     placeholder="Email" v-model="$store.state.item.email">
              </div>
+             <div class="form-group">
+                <label for="create">Author:</label>
+                <select class="form-control" id="create" name="author"
+                v-model="$store.state.item.author">
+                    <option value="N">No</option>
+                    <option value="S">Yes</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password"

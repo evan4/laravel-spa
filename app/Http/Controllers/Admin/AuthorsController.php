@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Role;
+use Illuminate\Validation\Rule;
 
 use App\User;
 
@@ -27,7 +27,7 @@ class AuthorsController extends Controller
                 'url' => ""
             ],
         ]);
-        $listModel =  User::select('id', 'name', 'email')->paginate(2);
+        $listModel =  User::select('id', 'name', 'email')->where('author', '=', 'S')->paginate(5);
 
         return view("admin.authors.index", compact('listBreadcrumbs', 'listModel'));
     }
