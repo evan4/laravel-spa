@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use App\Article;
+
 class HomeController extends Controller
 {
     /**
@@ -29,6 +32,12 @@ class HomeController extends Controller
                 'url' => route('home')
             ]
         ]);
-        return view('home', compact('listBreadcrumbs'));
+
+        $totalUsers = User::count();
+        $totalArticles = Article::count();
+        $totalAuthors = User::where('author', '=', 'S')->count();;
+
+        return view('home', compact('listBreadcrumbs', 
+            'totalUsers', 'totalArticles', 'totalAuthors'));
     }
 }

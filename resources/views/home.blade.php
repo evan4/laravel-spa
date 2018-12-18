@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <box
-                        qtd="80"
+                        qtd="{{$totalUsers}}"
                         title="Articles"
                         url="{{ route('articles.index') }}"
                         color="orange"
@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-4">
                     <box
-                        qtd="1500"
+                        qtd="{{$totalArticles}}"
                         title="Users"
                         url="{{ route('users.index') }}"
                         color="blue"
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-4">
                     <box
-                        qtd="3"
+                        qtd="{{$totalAuthors}}"
                         title="Authors"
                         url="{{ route('authors.index') }}"
                         color="red"
