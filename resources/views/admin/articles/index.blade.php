@@ -23,7 +23,7 @@
             v-bind:list="{{$listBreadcrumbs}}"></breadcrumb>
             
         <table-list
-            v-bind:titles="['#', 'Títle', 'Description']"
+            v-bind:titles="['#', 'Títle', 'Description', 'Author', 'data']"
             v-bind:items="{{json_encode($listArticles)}}"
             create="#create"
             details="/admin/articles/"
