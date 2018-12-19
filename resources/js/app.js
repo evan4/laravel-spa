@@ -43,10 +43,9 @@ Vue.component('breadcrumb', require('./components/Breadcrumb.vue'));
 Vue.component('modal', require('./components/modal/Modal.vue'));
 Vue.component('modallink', require('./components/modal/ModalLink.vue'));
 Vue.component('formComponent', require('./components/FormComponent.vue'));
-Vue.component('VueCkeditor', require('vue-ckeditor2'));
 Vue.component('articlescard', require('./components/ArticlesCard.vue'));
 
-//import VueCkeditor from 'vue-ckeditor2';
+import VueCkeditor from 'vue-ckeditor2';
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -63,5 +62,5 @@ const app = new Vue({
     mounted: function () {
         document.getElementById('app').style.display = 'block';
     },
-    //components: { VueCkeditor },
+    components: { VueCkeditor },
 });

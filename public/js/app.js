@@ -14312,6 +14312,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_ckeditor2__ = __webpack_require__(87);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14354,10 +14355,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('breadcrumb', __webpack_re
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(72));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modallink', __webpack_require__(77));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('formComponent', __webpack_require__(82));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('VueCkeditor', __webpack_require__(87));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('articlescard', __webpack_require__(88));
 
-//import VueCkeditor from 'vue-ckeditor2';
+
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -14373,8 +14373,8 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     store: store,
     mounted: function mounted() {
         document.getElementById('app').style.display = 'block';
-    }
-    //components: { VueCkeditor },
+    },
+    components: { VueCkeditor: __WEBPACK_IMPORTED_MODULE_2_vue_ckeditor2__["a" /* default */] }
 });
 
 /***/ }),
@@ -49321,7 +49321,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49469,6 +49469,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     }
   },
+  filters: {
+    formatData: function formatData(value) {
+      if (!value) return '';
+      value = value.toString();
+
+      if (value.split('-').length == 3) {
+        value = value.split('-');
+        return value[2] + '/' + value[1] + '/' + value[0];
+      }
+      return value;
+    }
+  },
   computed: {
     list: function list() {
       var list = this.items.data,
@@ -49601,7 +49613,7 @@ var render = function() {
             "tr",
             [
               _vm._l(item, function(i) {
-                return _c("td", [_vm._v(_vm._s(i))])
+                return _c("td", [_vm._v(_vm._s(_vm._f("formatData")(i)))])
               }),
               _vm._v(" "),
               _vm.details || _vm.edit || _vm.deleted
@@ -50642,7 +50654,6 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -50974,7 +50985,7 @@ var VueCkeditor = __vue_normalize__(
   undefined
 );
 
-/* harmony default export */ __webpack_exports__["default"] = (VueCkeditor);
+/* harmony default export */ __webpack_exports__["a"] = (VueCkeditor);
 
 
 /***/ }),
@@ -51063,7 +51074,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51090,7 +51101,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title', 'description', 'link', 'image', 'data', 'author', 'sm']
+  props: ['title', 'description', 'link', 'image', 'data', 'author', 'sm'],
+  filters: {
+    formatData: function formatData(value) {
+      if (!value) return '';
+      value = value.toString();
+      value = value.split('-');
+      return value[2] + '/' + value[1] + '/' + value[0];
+    }
+  }
 });
 
 /***/ }),
@@ -51109,7 +51128,11 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("small", [_vm._v(_vm._s(_vm.data) + " - " + _vm._s(_vm.author))]),
+        _c("small", [
+          _vm._v(
+            _vm._s(_vm._f("formatData")(_vm.data)) + " - " + _vm._s(_vm.author)
+          )
+        ]),
         _vm._v(" "),
         _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
         _vm._v(" "),

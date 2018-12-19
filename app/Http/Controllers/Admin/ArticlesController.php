@@ -29,7 +29,7 @@ class ArticlesController extends Controller
         ]);
 
         $listArticles = Article::listArticles(5);
-        //dd($listArticles);
+        
         return view("admin.articles.index", compact('listBreadcrumbs', 'listArticles'));
     }
 
@@ -52,12 +52,13 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all(); 
-
+        $data['data'] = date('Y-m-d', strtotime($data['data']));
+        
         $validator = \Validator::make($data, [
             "title" => "required",
             "description" => "required",
             "content" => "required",
-            "data" => "required",
+            "data" => "required|date",
         ]);
 
         if($validator->fails()){
@@ -101,12 +102,13 @@ class ArticlesController extends Controller
     {
         //dd($request->all());
         $data = $request->all(); 
-       
+        $data['data'] = date('Y-m-d', strtotime($data['data']));
+
         $validator = \Validator::make($data, [
             "title" => "required",
             "description" => "required",
             "content" => "required",
-            "data" => "required",
+            "data" => "required|date",
         ]);
 
         if($validator->fails()){

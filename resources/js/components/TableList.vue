@@ -31,7 +31,7 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in list">
-            <td v-for="i in item">{{i}}</td>
+            <td v-for="i in item">{{i | formatData }}</td>
            
             <td  v-if="details || edit || deleted ">
                 <form 
@@ -134,8 +134,19 @@ export default {
         }else{
           this.orderAux = 'asc';
         }
-        
       }
+    },
+    filters: {
+      formatData: function (value) {
+        if(!value) return '';
+        value = value.toString();
+
+        if (value.split('-').length == 3) {
+          value = value.split('-');
+          return value[2] + '/' + value[1] + '/' + value[0];
+        }
+        return value;
+       }
     },
     computed: {
       list: function () {

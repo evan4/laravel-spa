@@ -116,8 +116,8 @@
             </div>
             <div class="form-group">
                 <label for="data">Data:</label>
-                <input type="data" class="form-control" id="data"
-                    name="date"
+                <input type="date" class="form-control" id="data"
+                    name="data"
                    v-model="$store.state.item.data">
             </div>
             
