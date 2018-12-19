@@ -7,8 +7,8 @@
                 <articlescard
                 title="t{{$value->title}}"
                 description="t{{$value->description}}" 
-                link="#" 
-                    image="{{ asset('img/ISyjpy15451956461816_b.jpg') }}"
+                link="{{route('article', [$value->id, str_slug($value->title) ] )}}" 
+                image="{{ asset('img/ISyjpy15451956461816_b.jpg') }}"
                 data="{{$value->data}}"
                 author="{{$value->author}}"
                 sm="4"

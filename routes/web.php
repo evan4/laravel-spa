@@ -15,7 +15,15 @@ use App\Article;
 Route::get('/', function () {
     $list = Article::listArticlesSite(3);
     return view('site', compact('list'));
-});
+})->name('site');
+
+Route::get('/article/{id}/{title?}', function ($id) {
+    $article = Article::find($id);
+    if($article) {
+        return view('article', compact('article'));
+    }
+    return redirect()->route('site');
+})->name('article');
 
 Auth::routes();
 
