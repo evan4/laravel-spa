@@ -14,7 +14,7 @@
        props: ['title', 'color'],
        computed: {
            defineColor: function () {
-               return "card-header "+ this.color;
+               return "card-header "+ (this.color || '');
            }
        }
     }

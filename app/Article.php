@@ -47,4 +47,18 @@ class Article extends Model
 
         return $listArticles;
     }
+
+    public static function listArticlesSite($paginate)
+    {
+
+        $listArticles = DB::table('articles')
+            ->join('users', 'users.id', '=', 'articles.user_id')
+            ->select('articles.id', 'articles.title', 'articles.description', 'users.name as author', 'articles.data')
+            ->whereNull('deleted_at')
+            ->whereDate('data', '<=', date('Y-m-d') )
+            ->orderBy('data', 'DESC')
+            ->paginate($paginate);
+
+        return $listArticles;
+    }
 }
