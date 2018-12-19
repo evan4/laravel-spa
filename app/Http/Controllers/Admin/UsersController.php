@@ -20,8 +20,8 @@ class UsersController extends Controller
     {
         $listBreadcrumbs = json_encode ([
             [
-                'title' => 'Home',
-                'url' => route('home')
+                'title' => 'Admin',
+                'url' => route('admin')
             ],
              [
                 'title' => 'users list',
