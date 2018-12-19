@@ -29,7 +29,7 @@
             edited="/admin/articles/"
             deleted="/admin/articles/"
             order="desc"
-            order-col="1"
+            order-col="0"
             token="{{csrf_token()}}"
             modal="sim"
             >
@@ -66,7 +66,7 @@
                           ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
                         ],
                         height: 300
-                      }" ></vue-ckeditor>
+                      }" />
             </div>
             <div class="form-group">
                 <label for="data-create">Data:</label>
@@ -103,9 +103,16 @@
              </div>
              <div class="form-group">
                 <label for="content">Conten:</label>
-                <textarea class="form-control" id="conten" 
+                <vue-ckeditor 
+                    id="content" 
                     name="content"
-                    v-model="$store.state.item.content"></textarea>
+                    v-model="$store.state.item.content"
+                    v-bind:config="{
+                        toolbar: [
+                          ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+                        ],
+                        height: 300
+                      }" />
             </div>
             <div class="form-group">
                 <label for="data">Data:</label>
