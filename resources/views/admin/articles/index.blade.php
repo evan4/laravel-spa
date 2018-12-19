@@ -15,7 +15,6 @@
                 </li>
                 @endforeach
             </div>
-           
         @endif
       
     <panel title="List of Articles">
@@ -39,7 +38,7 @@
     </panel>
     
     <modal name="add" title="Create">
-       <formcomponent
+       <form-component
        id="formAdd"
         css=""
         action="{{route('articles.store')}}"
@@ -57,16 +56,24 @@
                     placeholder="Description" value="{{old('description')}}">
             </div>
             <div class="form-group">
-                <label for="content-create">Conten:</label>
-                <textarea class="form-control" id="content-create" 
-                    name="content">{{old('content')}}</textarea>
+                <label for="content-create">Content:</label>
+                <vue-ckeditor 
+                    id="content-create" 
+                    name="content"
+                    value="{{old('content')}}" 
+                    v-bind:config="{
+                        toolbar: [
+                          ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
+                        ],
+                        height: 300
+                      }" ></vue-ckeditor>
             </div>
             <div class="form-group">
                 <label for="data-create">Data:</label>
                 <input type="datetime-local" class="form-control" id="data-create"
                     name="data" value="{{ old('data') }}">
             </div>
-        </formcomponent>
+        </form-component>
 
         <span slot="buttons">
             <button  form="formAdd"
@@ -76,7 +83,7 @@
     </modal>
 
     <modal name="edit" title="Edit">
-        <formcomponent
+        <form-component
         id="formEdit"
          css=""
          v-bind:action="'/admin/articles/'+$store.state.item.id"
@@ -107,7 +114,7 @@
                    v-model="$store.state.item.data">
             </div>
             
-         </formcomponent>
+         </form-component>
          
          <span slot="buttons">
             <button  form="formEdit"

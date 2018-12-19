@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 use App\Article;
 
@@ -26,8 +27,9 @@ class ArticlesController extends Controller
                 'url' => ""
             ],
         ]);
-        $listArticles = Article::select('id', 'title', 'description', 'user_id', 'data')->paginate(5);
 
+        $listArticles = Article::listArticles(5);
+        //dd($listArticles);
         return view("admin.articles.index", compact('listBreadcrumbs', 'listArticles'));
     }
 

@@ -6510,6 +6510,11 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-ckeditor2@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/vue-ckeditor2/-/vue-ckeditor2-2.1.1.tgz#072f7bcface15c41dbcfda72bf7b16f6a0359367"
+  integrity sha512-oJ9kpZ9Pk6zfu4ZqPEq1SHhZLUbe6iF2SqOuUagBjz5WS3gVi3+Mn6+9BHuF6GGObwhIN1dfoD0uprTJqp7XAQ==
+
 vue-hot-reload-api@^2.2.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.1.tgz#b2d3d95402a811602380783ea4f566eb875569a2"

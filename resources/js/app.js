@@ -7,8 +7,8 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
-
+//window.Vue = require('vue');
+import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
@@ -42,7 +42,9 @@ Vue.component('table-list', require('./components/TableList.vue'));
 Vue.component('breadcrumb', require('./components/Breadcrumb.vue'));
 Vue.component('modal', require('./components/modal/Modal.vue'));
 Vue.component('modallink', require('./components/modal/ModalLink.vue'));
-Vue.component('formcomponent', require('./components/FormComponent.vue'));
+Vue.component('formComponent', require('./components/FormComponent.vue'));
+
+import VueCkeditor from 'vue-ckeditor2';
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -58,5 +60,6 @@ const app = new Vue({
     store,
     mounted: function () {
         document.getElementById('app').style.display = 'block';
-    }
+    },
+    components: { VueCkeditor },
 });
