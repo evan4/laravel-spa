@@ -6,6 +6,7 @@
             v-bind:list="{{$listBreadcrumbs}}"></breadcrumb>
         <panel title="Dashboard">
             <div class="row">
+                @can('author')
                 <div class="col-md-4">
                     <box
                         qtd="{{$totalUsers}}"
@@ -14,6 +15,8 @@
                         color="orange"
                         icon="ion ion-pie-graph"></box>
                 </div>
+                @endcan
+                @can('eAdmin')
                 <div class="col-md-4">
                     <box
                         qtd="{{$totalArticles}}"
@@ -38,6 +41,7 @@
                         color="green"
                         icon="ion ion-person"></box>
                 </div>
+                @endcan
             </div>
         </panel>
    </page>
