@@ -102,7 +102,7 @@
                     placeholder="Description" v-model="$store.state.item.description">
              </div>
              <div class="form-group">
-                <label for="content">Conten:</label>
+                <label for="content">Content:</label>
                 <vue-ckeditor 
                     id="content" 
                     name="content"

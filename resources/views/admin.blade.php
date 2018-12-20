@@ -30,6 +30,14 @@
                         color="red"
                         icon="ion ion-person"></box>
                 </div>
+                <div class="col-md-4">
+                    <box
+                        qtd="{{$totalAdmins}}"
+                        title="Admins"
+                        url="{{ route('adm.index') }}"
+                        color="green"
+                        icon="ion ion-person"></box>
+                </div>
             </div>
         </panel>
    </page>

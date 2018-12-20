@@ -33,7 +33,6 @@ const store = new Vuex.Store({
     }
 });
 
-
 Vue.component('top', require('./components/Top.vue'));
 Vue.component('panel', require('./components/Panel.vue'));
 Vue.component('box', require('./components/Box.vue'));

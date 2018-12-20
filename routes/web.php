@@ -33,4 +33,6 @@ Route::middleware(('auth'))->prefix('admin')->namespace('Admin')->group(function
     Route::resource('articles', 'ArticlesController');
     Route::resource('users', 'UsersController');
     Route::resource('authors', 'AuthorsController');
+    Route::resource('adm', 'AdminController');
+
 });

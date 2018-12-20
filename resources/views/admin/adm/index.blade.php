@@ -18,7 +18,7 @@
            
         @endif
       
-    <panel title="List of users">
+    <panel title="List of Admin">
         <breadcrumb
             v-bind:list="{{$listBreadcrumbs}}"></breadcrumb>
             
@@ -26,12 +26,10 @@
             v-bind:titles="['#', 'Name', 'Email']"
             v-bind:items="{{json_encode($listModel)}}"
             create="#create"
-            details="/admin/users/"
-            edited="/admin/users/"
-            deleted="/admin/users/"
+            details="/admin/adm/"
+            edited="/admin/adm/"
             order="desc"
             order-col="1"
-            token="{{csrf_token()}}"
             modal="sim"
             >
         </table-list>
@@ -42,7 +40,7 @@
        <formcomponent
        id="formAdd"
         css=""
-        action="{{route('users.store')}}"
+        action="{{route('adm.store')}}"
         method="post"
         enctype=""
         token="{{csrf_token()}}">
@@ -56,20 +54,15 @@
                 <input type="email" class="form-control" id="email-create" name="email"
                     placeholder="Email" value="{{old('email')}}">
             </div>
-            <div class="form-group">
-                <label for="author-create">Author:</label>
-                <select class="form-control" id="author-create" name="author">
-                    <option {{ old('author') && old('author') === 'N' ? 'selected' : '' }} value="N">No</option>
-                    <option {{ old('author') && old('author') === 'S' ? 'selected' : '' }} value="S">Yes</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="admins-create">Admins:</label>
-                <select class="form-control" id="admins-create" name="admins">
+            {{-- <div class="form-group">
+                <label for="admin-create">Admins:</label>
+                <select class="form-control" id="admin-create" name="admins">
                     <option {{ old('admins') && old('admins') === 'N' ? 'selected' : '' }} value="N">No</option>
-                    <option {{ old('admins') && old('admins') === 'S' ? 'selected' : '' }} value="S">Yes</option>
+                    <option {{ old('admins') && old('admins') === 'S' ? 'selected' : '' }} 
+                        {{ !old('admins') ? 'selected' : '' }}
+                        value="S">Yes</option>
                 </select>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="password-create">Password:</label>
                 <input type="password" class="form-control" id="password-create"
@@ -88,7 +81,7 @@
         <formcomponent
         id="formEdit"
          css=""
-         v-bind:action="'/admin/users/'+$store.state.item.id"
+         v-bind:action="'/admin/adm/'+$store.state.item.id"
          method="put"
          enctype=""
          token="{{ csrf_token() }}">
@@ -103,22 +96,14 @@
                  <input type="email" class="form-control" id="email" name="email"
                     placeholder="Email" v-model="$store.state.item.email">
              </div>
-             <div class="form-group">
-                <label for="create">Author:</label>
-                <select class="form-control" id="create" name="author"
-                v-model="$store.state.item.author">
-                    <option value="N">No</option>
-                    <option value="S">Yes</option>
-                </select>
-            </div>
-            <div class="form-group">
+            {{--  <div class="form-group">
                 <label for="create">Admins:</label>
                 <select class="form-control" id="create" name="admins"
                 v-model="$store.state.item.admins">
                     <option value="N">No</option>
                     <option value="S">Yes</option>
                 </select>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password"
@@ -136,7 +121,6 @@
 
      <modal name="details" v-bind:title="$store.state.item.name">
         <p >@{{$store.state.item.email}}</p>
-        <p >@{{$store.state.item.author}}</p>
      </modal>
 
   </page>
