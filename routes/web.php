@@ -1,5 +1,6 @@
 <?php
 use App\Article;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +13,18 @@ use App\Article;
 |
 */
 
-Route::get('/', function () {
-    $list = Article::listArticlesSite(3);
-    return view('site', compact('list'));
+Route::get('/', function (Request $req) {
+
+    if(isset($req->search) && !empty($req->search) ){
+        $search = $req->search;
+        $list = Article::listArticlesSite(3, $search);
+  
+      }else{
+        $list = Article::listArticlesSite(3);
+        $search = "";
+      }
+    
+    return view('site', compact('list', 'search'));
 })->name('site');
 
 Route::get('/article/{id}/{title?}', function ($id) {

@@ -2,6 +2,13 @@
 @section('content')
 <page size="12">
     <panel title="Articles">
+        <div class="row justify-content-md-center">
+            <form class="form-inline mb-2 mt-2" action="{{route('site')}}" method="get" >
+                <input type="search" class="form-control" name="search" 
+                    placeholder="Search" value="{{isset($search) ? $search : ""}}">
+                <button class="btn btn-info">Search</button>
+            </form>
+        </div>
         <div class="row">
             @foreach($list as $key => $value)
                 <articlescard

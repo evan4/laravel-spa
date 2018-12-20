@@ -48,17 +48,31 @@ class Article extends Model
         return $listArticles;
     }
 
-    public static function listArticlesSite($paginate)
+    public static function listArticlesSite($paginate, $search = null)
     {
-
-        $listArticles = DB::table('articles')
+        if ($search) {
+            $listArticles = DB::table('articles')
+            ->join('users', 'users.id', '=', 'articles.user_id')
+            ->select('articles.id', 'articles.title', 'articles.description', 'users.name as author', 'articles.data')
+            ->whereNull('deleted_at')
+            ->whereDate('data', '<=', date('Y-m-d') )
+            ->where(function ($query) use ($search)
+            {
+                $query->orWhere('title', 'like', '%'.$search.'%')
+                    ->orWhere('description', 'like', '%'.$search.'%');
+            })
+            ->orderBy('data', 'DESC')
+            ->paginate($paginate);
+        }else{
+            $listArticles = DB::table('articles')
             ->join('users', 'users.id', '=', 'articles.user_id')
             ->select('articles.id', 'articles.title', 'articles.description', 'users.name as author', 'articles.data')
             ->whereNull('deleted_at')
             ->whereDate('data', '<=', date('Y-m-d') )
             ->orderBy('data', 'DESC')
             ->paginate($paginate);
-
+        }
+        
         return $listArticles;
     }
 }
