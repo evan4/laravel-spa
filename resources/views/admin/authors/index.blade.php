@@ -37,7 +37,7 @@
     </panel>
     
     <modal name="add" title="Create">
-       <formcomponent
+       <form-component
        id="formAdd"
         css=""
         action="{{route('authors.store')}}"
@@ -68,7 +68,7 @@
                 <input type="password" class="form-control" id="password-create"
                     name="password" value="{{ old('password') }}">
             </div>
-        </formcomponent>
+        </form-component>
 
         <span slot="buttons">
             <button  form="formAdd"
@@ -78,7 +78,7 @@
     </modal>
 
     <modal name="edit" title="Edit">
-        <formcomponent
+        <form-component
         id="formEdit"
          css=""
          v-bind:action="'/admin/authors/'+$store.state.item.id"
@@ -110,7 +110,7 @@
                     name="password">
             </div>
             
-         </formcomponent>
+         </form-component>
          
          <span slot="buttons">
             <button  form="formEdit"

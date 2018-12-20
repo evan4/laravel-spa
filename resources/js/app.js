@@ -41,7 +41,7 @@ Vue.component('table-list', require('./components/TableList.vue'));
 Vue.component('breadcrumb', require('./components/Breadcrumb.vue'));
 Vue.component('modal', require('./components/modal/Modal.vue'));
 Vue.component('modallink', require('./components/modal/ModalLink.vue'));
-Vue.component('formComponent', require('./components/FormComponent.vue'));
+Vue.component('form-component', require('./components/FormComponent.vue'));
 Vue.component('articlescard', require('./components/ArticlesCard.vue'));
 
 import VueCkeditor from 'vue-ckeditor2';

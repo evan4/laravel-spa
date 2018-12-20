@@ -39,7 +39,7 @@
     </panel>
     
     <modal name="add" title="Create">
-       <formcomponent
+       <form-component
        id="formAdd"
         css=""
         action="{{route('users.store')}}"
@@ -75,7 +75,7 @@
                 <input type="password" class="form-control" id="password-create"
                     name="password" value="{{ old('password') }}">
             </div>
-        </formcomponent>
+        </form-component>
 
         <span slot="buttons">
             <button  form="formAdd"
@@ -85,7 +85,7 @@
     </modal>
 
     <modal name="edit" title="Edit">
-        <formcomponent
+        <form-component
         id="formEdit"
          css=""
          v-bind:action="'/admin/users/'+$store.state.item.id"
@@ -104,16 +104,16 @@
                     placeholder="Email" v-model="$store.state.item.email">
              </div>
              <div class="form-group">
-                <label for="create">Author:</label>
-                <select class="form-control" id="create" name="author"
+                <label for="author">Author:</label>
+                <select class="form-control" id="author" name="author"
                 v-model="$store.state.item.author">
                     <option value="N">No</option>
                     <option value="S">Yes</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="create">Admins:</label>
-                <select class="form-control" id="create" name="admins"
+                <label for="admins">Admins:</label>
+                <select class="form-control" id="admins" name="admins"
                 v-model="$store.state.item.admins">
                     <option value="N">No</option>
                     <option value="S">Yes</option>
@@ -125,7 +125,7 @@
                     name="password">
             </div>
             
-         </formcomponent>
+         </form-component>
          
          <span slot="buttons">
             <button  form="formEdit"

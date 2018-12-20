@@ -14354,7 +14354,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('table-list', __webpack_re
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('breadcrumb', __webpack_require__(67));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(72));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modallink', __webpack_require__(77));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('formComponent', __webpack_require__(82));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('form-component', __webpack_require__(82));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('articlescard', __webpack_require__(87));
 
 

@@ -37,7 +37,7 @@
     </panel>
     
     <modal name="add" title="Create">
-       <formcomponent
+       <form-component
        id="formAdd"
         css=""
         action="{{route('adm.store')}}"
@@ -54,7 +54,7 @@
                 <input type="email" class="form-control" id="email-create" name="email"
                     placeholder="Email" value="{{old('email')}}">
             </div>
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label for="admin-create">Admins:</label>
                 <select class="form-control" id="admin-create" name="admins">
                     <option {{ old('admins') && old('admins') === 'N' ? 'selected' : '' }} value="N">No</option>
@@ -62,13 +62,13 @@
                         {{ !old('admins') ? 'selected' : '' }}
                         value="S">Yes</option>
                 </select>
-            </div> --}}
+            </div>
             <div class="form-group">
                 <label for="password-create">Password:</label>
                 <input type="password" class="form-control" id="password-create"
                     name="password" value="{{ old('password') }}">
             </div>
-        </formcomponent>
+        </form-component>
 
         <span slot="buttons">
             <button  form="formAdd"
@@ -78,7 +78,7 @@
     </modal>
 
     <modal name="edit" title="Edit">
-        <formcomponent
+        <form-component
         id="formEdit"
          css=""
          v-bind:action="'/admin/adm/'+$store.state.item.id"
@@ -96,21 +96,21 @@
                  <input type="email" class="form-control" id="email" name="email"
                     placeholder="Email" v-model="$store.state.item.email">
              </div>
-            {{--  <div class="form-group">
+             <div class="form-group">
                 <label for="create">Admins:</label>
                 <select class="form-control" id="create" name="admins"
                 v-model="$store.state.item.admins">
                     <option value="N">No</option>
                     <option value="S">Yes</option>
                 </select>
-            </div> --}}
+            </div>
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password"
                     name="password">
             </div>
             
-         </formcomponent>
+         </form-component>
          
          <span slot="buttons">
             <button  form="formEdit"
