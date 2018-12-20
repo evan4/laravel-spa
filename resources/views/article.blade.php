@@ -1,10 +1,11 @@
 @extends('layouts.app') 
 @section('content')
 <page size="12">
-    <panel title="Articles">
-            <small>{{$article->data}} - {{$article->author}}</small>
-            <h5>{{$article->title}}</h5>
-            <div>{{$article->description}}</div>
+    <panel>
+            <h2 class="text-center">{{$article->title}}</h2>
+            <h4 class="text-center">{{$article->description}}</h4>
+            <small>{{$article->user->name}} - {{ date('d/m/Y',strtotime($article->data) ) }}</small>
+            <div>{!! $article->content !!}</div>
     </panel>
 </page>
 @endsection

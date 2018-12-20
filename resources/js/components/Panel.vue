@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-      <div v-bind:class="defineColor">
+      <div v-if="title" v-bind:class="defineColor">
           {{ title }}
       </div>
       <div clasc="card-body">
